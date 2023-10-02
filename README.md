@@ -1,73 +1,54 @@
-# Cheeeeeeesssseeeeeeee
+# Brielievers Frontend application
 
-## Documentation
+This application's MVP was built in a [2 week sprint] (https://trello.com/b/JjgnulJl/cheese-sommelier) as a final project of the Makers Academy fullstack development bootcamp.
+It was built by a team of 5 developers ([Hazel] (https://github.com/hash-smy), [Oli] (https://github.com/OliLoftus), [Rich] (https://github.com/rashworth7), [Sam] (https://github.com/iamsahm), [Charlotte] (https://github.com/charlottemothersole)) using AGILE methodologies.
 
-[More documentation of the codebase and its architecture can be found here.](./DOCUMENTATION.md) It's recommended you all read this _after making sure the whole setup below worked for everyone_. Then work together on a diagram describing how the application works.
+## About the application
 
-## Card wall
+The application is a cheese sommelier app, which allows users to
 
-https://trello.com/b/JjgnulJl/cheese-sommelier
+-   Search for cheeses by type
+    -   Using the menu in the navbar to select a cheese type
+-   Get a random cheese
+    -   Each time a user visits the homepage a random cheese is displayed
+-   Rate cheeses
+    -   Users can rate cheeses out of 5 in the individual cheese pages
+-   Get recommendations based on their rating
+    -   User ratings are used to calculate a user preference and return a cheese that fits their highest rated preference but that they haven't yet rated
+-   See a map of cheeses by country
+    -   Users can see a map of the world with markers for cheeses and a link to the cheese page
 
-## Quickstart
+## Running the app
+
+Currently the database is hosted on MongoDB Atlas and can only be accessed by the team. If you would like to run the app locally, please contact one of the team members for the database connection string.
+
+If you'd like to run it locally, you'll need to set up the database locally and populate it with the cheeses.json file. See the instructions below.
+
+```
+git clone https://github.com/iamsahm/cheese_api.git backend
+cd backend
+npm install
+npm run init-database
+```
+
+Point the app at your local database by changing the `MONGODB_URI` in `api/.env` to `mongodb://localhost:27017/cheese-api`.
+
+Then run npm start with a secret key.
+
+```
+JWT_SECRET=notverysecret npm start
+
+```
 
 ## Folder Structure
 
 Final project
-   - cheese_api
-   - cheese-frontend
 
-### Install Node.js
-
-1. Install Node Version Manager (NVM)
-    ```
-    brew install nvm
-    ```
-    Then follow the instructions to update your `~/.bash_profile`.
-2. Open a new terminal
-3. Install the latest version of [Node.js](https://nodejs.org/en/), currently `18.1.0`.
-    ```
-    nvm install 18
-    ```
-
-### Setting up API - Backend
-
-1. Clone the repo to your local machine
-2. Install Node.js dependencies for both the `frontend` and `api` directories.
-    ```
-    ; npm install
-    ```
-
-> You might get warning messages about the installed dependencies at this point. You can ignore them, as long as the installation process doesn't fail. If the setup fails at this point, don't wait for too long and reach out to your coach.
-
-3. Install an ESLint plugin for your editor. For example: [`linter-eslint`](https://github.com/AtomLinter/linter-eslint) for Atom.
-4. Install MongoDB
-    ```
-    brew tap mongodb/brew
-    brew install mongodb-community@5.0
-    ```
-    _Note:_ If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
-5. Start MongoDB
+-   cheese_api
+-   cheese-frontend
 
     ```
     brew services start mongodb-community@5.0
-    ```
-
-6. Run the package.json command below to add the cheeses.json database to your local mongo database
-
-```
-npm run init-database
-```
-
-> If you've run this command before you'll get a load of error messages about populating database with duplicate keys. If we update the .json in the future we should wipe the current database and repopulate it with fresh data. (Sam: I think it actually updates with fresh inserted docs already, maybe we can just run it again and it'll poll and update new data??? Hopefully...)
-
-### How to run the server and use the app (as a human)
-
-1. Start the server application (in the `api` directory)
-
-    **Note the use of an environment variable for the JWT secret**
-
-    ```
-    ; JWT_SECRET=notverysecret npm start
     ```
 
 ### How to run automated tests
@@ -86,16 +67,6 @@ You should leave this running in a terminal.
 
 Then, you can either run tests for the backend or the frontend following the steps below.
 
-#### Running tests for the backend
-
-Run the tests in a new terminal session:
-
-```bash
-# Make sure you're in the api directory
-
-; JWT_SECRET=notverysecret npm run test
-```
-
 ## MongoDB Connection Errors?
 
 Some people occasionally experience MongoDB connection errors when running the tests or trying to use the application. Here are some tips which might help resolve such issues.
@@ -108,6 +79,5 @@ If you have issues that are not resolved by these tips, please reach out to a co
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
 ---
-
 
 <!-- END GENERATED SECTION DO NOT EDIT -->
